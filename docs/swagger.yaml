@@ -1,0 +1,68 @@
+basePath: /
+definitions:
+  model.Car:
+    properties:
+      color:
+        type: string
+      enigne_capacity:
+        type: number
+      id:
+        type: integer
+      make:
+        type: string
+      model:
+        type: string
+      year:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API for managing cars
+  title: Cars API
+  version: "1.0"
+paths:
+  /car:
+    post:
+      consumes:
+      - application/json
+      description: Adds a new car to the database
+      parameters:
+      - description: Car data
+        in: body
+        name: car
+        required: true
+        schema:
+          $ref: '#/definitions/model.Car'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/model.Car'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Create a new car
+      tags:
+      - cars
+  /cars:
+    get:
+      description: Returns a list of all cars
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Car'
+            type: array
+      summary: Get all cars
+      tags:
+      - cars
+swagger: "2.0"
