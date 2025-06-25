@@ -6,5 +6,5 @@ type Car struct {
 	Model          string  `json:"model"`
 	Year           int     `json:"year"`
 	Color          string  `json:"color"`
-	EngineCapacity float32 `json:"enigne_capacity"`
+	EngineCapacity float64 `json:"engine_capacity"`
 }
